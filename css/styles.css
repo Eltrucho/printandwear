@@ -1,0 +1,336 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN BASE (Estilo Minimalista)
+   ========================================================================== */
+:root {
+    --bg-color: #ffffff;       /* Fondo blanco puro */
+    --text-color: #1a1a1a;     /* Negro suave para los textos */
+    --light-gray: #f9f9f9;     /* Fondo gris muy claro para contrastes */
+    --border-color: #e5e5e5;   /* Líneas sutiles de separación */
+    --accent-color: #0070f3;   /* Azul eléctrico sutil (para enlaces/botones) */
+    --max-width: 1100px;       /* Ancho máximo contenedor */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+/* ==========================================================================
+   2. CABECERA (Uso de Flexbox)
+   ========================================================================== */
+.main-header {
+    display: flex;
+    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+    align-items: center;            /* Centrados verticalmente */
+    padding: 25px 5%;
+    border-bottom: 1px solid var(--border-color);
+    max-width: var(--max-width);
+    margin: 0 auto;                 /* Centra la cabecera en pantallas grandes */
+}
+
+.logo a {
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+}
+
+.main-nav ul {
+    display: flex;                  /* Enlaces en línea horizontal */
+    list-style: none;
+    gap: 30px;                      /* Espacio limpio entre enlaces */
+}
+
+.main-nav a {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #666;                    /* Color gris sutil para enlaces inactivos */
+}
+
+.main-nav a:hover, 
+.main-nav a.active {
+    color: var(--text-color);       /* Negro al pasar el ratón o estar activo */
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   3. CUERPO (Estructura de la Página de Inicio)
+   ========================================================================== */
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 60px 5%;
+    min-height: calc(100vh - 180px); /* Asegura que el footer no flote si hay poco texto */
+}
+
+/* Sección de descripción (Hero) */
+.hero-section {
+    max-width: 700px;               /* Bloque de texto estrecho para leer mejor */
+    margin-bottom: 60px;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 1.15rem;
+    color: #555;
+}
+
+/* Contenedor de la Galería */
+.gallery-section {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.swiper {
+    width: 100%;
+    height: 450px;                  /* Altura fija para que la galería se vea imponente */
+    background: var(--light-gray);
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;              /* Ajusta la imagen al contenedor sin deformarla */
+}
+
+/* Personalización minimalista de los botones de Swiper */
+.swiper-button-next, 
+.swiper-button-prev {
+    color: var(--text-color) !important;
+    transform: scale(0.7);          /* Flechas más finas y discretas */
+}
+
+/* ==========================================================================
+   4. PIE DE PÁGINA
+   ========================================================================== */
+.main-footer {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 40px 5%;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 0.85rem;
+    color: #888;
+}
+/* ==========================================================================
+   5. PÁGINA DE TRABAJOS (Uso de CSS Grid)
+   ========================================================================== */
+.trabajos-intro {
+    margin-bottom: 40px;
+}
+
+.trabajos-intro h1 {
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+/* La rejilla mágica con Grid */
+.trabajos-grid {
+    display: grid;
+    /* Crea 3 columnas iguales si hay espacio, si no, se adapta automáticamente */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Espacio limpio entre tarjetas */
+}
+
+.trabajo-card {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto sutil minimalista al pasar el ratón */
+.trabajo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.trabajo-img {
+    width: 100%;
+    height: 350px; /* Altura controlada para las fotos de los proyectos */
+    overflow: hidden;
+    background-color: var(--light-gray);
+}
+
+.trabajo-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.trabajo-info {
+    padding: 20px;
+}
+
+.trabajo-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.trabajo-info p {
+    font-size: 0.95rem;
+    color: #666;
+}
+/* ==========================================================================
+   6. PÁGINA DE CONTACTO (Formulario Minimalista)
+   ========================================================================== */
+.contacto-section {
+    max-width: 600px; /* Formulario estrecho y centrado, muy elegante */
+    margin: 0 auto;
+}
+
+.contacto-intro {
+    margin-bottom: 40px;
+    text-align: center; /* Centramos el texto de introducción en esta pantalla */
+}
+
+.contacto-intro h1 {
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.contacto-form {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos uno debajo de otro */
+    gap: 25px; /* Espacio limpio entre campos */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Espacio sutil entre la etiqueta y el input */
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #444;
+}
+
+/* Estilos para los campos de texto y textarea */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--light-gray);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Efecto focus minimalista cuando el usuario clica para escribir */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--text-color); /* El borde se vuelve negro sutil */
+    background-color: var(--bg-color);   /* El fondo pasa a ser blanco */
+}
+
+/* El botón de enviar */
+.btn-submit {
+    align-self: flex-start; /* Evita que el botón ocupe todo el ancho */
+    padding: 14px 30px;
+    background-color: var(--text-color); /* Botón negro */
+    color: var(--bg-color);              /* Texto blanco */
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.btn-submit:hover {
+    opacity: 0.9; /* Efecto sutil al pasar el ratón */
+}
+/* ==========================================================================
+   7. PÁGINA SOBRE NOSOTROS (Estructura en dos columnas)
+   ========================================================================== */
+.nosotros-container {
+    display: flex;
+    gap: 60px;          /* Espacio generoso entre el texto y la imagen */
+    align-items: center; /* Centrado vertical */
+}
+
+.nosotros-texto {
+    flex: 1;            /* Ocupa el 50% del espacio disponible */
+}
+
+.nosotros-texto h1 {
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.nosotros-texto .destacado {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.nosotros-texto p {
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+.nosotros-imagen {
+    flex: 1;            /* Ocupa el otro 50% del espacio disponible */
+    height: 450px;
+    background-color: var(--light-gray);
+    overflow: hidden;
+}
+
+.nosotros-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE BÁSICO (Para pantallas pequeñas / Móviles)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .nosotros-container {
+        flex-direction: column; /* Pone la imagen debajo del texto en móviles */
+        gap: 40px;
+    }
+    
+    .nosotros-imagen {
+        width: 100%;
+        height: 300px; /* Reducimos la altura de la foto en móviles */
+    }
+}
+/* Ajuste de color minimalista para los puntos de la galería */
+.swiper-pagination-bullet-active {
+    background: var(--text-color) !important; /* Puntos activos en negro suave */
+}
